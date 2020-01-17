@@ -1,0 +1,25 @@
+const Discord = require('discord.js')
+const versiondjs = require('discord.js').version;
+
+exports.run = async (client, message, args) => {
+    let statsembed = new Discord.RichEmbed()
+    .setColor('RED')
+    .setAuthor(`${message.guild.name}`, message.guild.iconURL)
+    .setThumbnail(client.user.displayAvatarURL, true)
+    .addField('Bot Name', client.user.username, true)
+    .addField('Bot Discriminator', client.user.discriminator, true)
+    .addField('Bot ID', client.user.id, true)
+    .addField('Bot Prefix', `:?`)
+    .addField('Bot Version', `v1.0.1`, true)
+    .addField('Bot Owner', `<@473276250815856650>`, true)
+    .addField('Bot was born at', client.user.createdAt)
+    // .addField('Joined This Server', client.user.joinedAt)
+    // .addBlankField()
+    // .addBlankField()
+    .addField('Server Count', client.guilds.size, true)
+    .addField('Users Count', client.users.size, true)
+    .addField('Emojis Count', client.emojis.size, true)
+    .addField('NodeJS Version', process.version, true)
+    .addField('Discord.JS Version', versiondjs, true)
+    message.channel.send(statsembed)
+}
